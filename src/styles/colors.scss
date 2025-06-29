@@ -1,0 +1,30 @@
+/*
+ * ==========================================
+ * COLOR PALETTE
+ * ==========================================
+ * Using SCSS variables for a static, compile-time color system.
+ */
+
+// -- Base Theme Colors (Dark Mode) --
+$background-primary: #1a1b26;      // A deep, cold slate blue for the main background
+$background-secondary: #252836;    // A slightly lighter slate for component backgrounds (cards, tables)
+$surface-raised: #3b3e5e;          // For elements that need to appear elevated
+
+// -- Accent Colors --
+$primary-accent: #4a90e2;          // A professional and vibrant blue
+$primary-accent-hover: #63a4ff;    // A lighter shade for hover/active states
+$primary-accent-text: #ffffff;     // Text color for buttons with the primary accent background
+
+// -- Text Colors --
+$text-primary: #f0f4f8;            // An off-white for primary text, easy on the eyes
+$text-secondary: #a0aec0;          // A lighter gray for secondary information, subtitles, and placeholders
+$text-disabled: #718096;           // For disabled states
+
+// -- Border & Divider Colors --
+$border-primary: #4a5568;          // Subtle border for separating components
+$border-secondary: #2d3748;        // Even more subtle border for internal dividers
+
+// -- State Colors --
+$state-success: #48bb78;           // Green
+$state-warning: #f6ad55;           // Amber/Orange
+$state-error: #f56565;             // Red

@@ -1,0 +1,43 @@
+<div class="watch-container">
+    <div class="player-section">
+        <div #playerContainer class="player-wrapper"></div>
+    </div>
+    <div class="controls-section">
+        <div class="stream-select">
+            <span>Select Stream:</span>
+            <select 
+                [value]="selectedStream().url"
+                (change)="onStreamSelect($event)">
+                @for (stream of availableStreams(); track stream.id) {
+                    <option [value]="stream.url">{{ stream.name }}</option>
+                }
+            </select>
+        </div>
+
+        @if (analytics(); as currentAnalytics) {
+            <h2 class="analytics-title">Live Analytics</h2>
+            <table class="analytics-table">
+                <tbody>
+                    <tr>
+                        <td>Resolution</td>
+                        <td>{{ currentAnalytics.resolution }}</td>
+                    </tr>
+                    <tr>
+                        <td>Framerate</td>
+                        <td>{{ currentAnalytics.framerate }} fps</td>
+                    </tr>
+                    <tr>
+                        <td>Network Latency</td>
+                        <td>{{ currentAnalytics.latency.toFixed(2) }} s</td>
+                    </tr>
+                    <tr>
+                        <td>Bitrate</td>
+                        <td>{{ currentAnalytics.bitrate }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        } @else {
+            <p class="analytics-loading">Waiting for stream data...</p>
+        }
+    </div>
+</div>
