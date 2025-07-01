@@ -1,19 +1,124 @@
 @import '../styles/colors';
 @import '../styles/typography';
 
-header {
-    display: flex;          // 1. Treats the header's direct children (img, h1) as flexible items.
-    align-items: center;    // 2. Vertically aligns the items to the center.
-    gap: 3rem;              // 3. Adds a 1rem space between the logo and the title.
+// header {
+//     display: flex;          // 1. Treats the header's direct children (img, h1) as flexible items.
+//     align-items: center;    // 2. Vertically aligns the items to the center.
+//     gap: 3rem;              // 3. Adds a 1rem space between the logo and the title.
 
-    padding: 2rem 2rem;
-    background-color: $background-primary;
+//     padding: 2rem 2rem;
+//     background-color: $background-primary;
     
-    .header-logo {
-        object-fit: contain;
-    }
+//     .header-logo {
+//         object-fit: contain;
+//     }
 
-    h1 {
-        margin: 0;
-    }
+//     h1 {
+//         margin: 0;
+//     }
+// }
+
+:host {
+  display: block;
+  //height: 100vh;
+  overflow: hidden; // Prevent scrolling on the main container
+}
+
+.app-layout {
+  display: flex;
+  height: 100%;
+}
+
+// --- Sidebar ---
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 250px; // Sidebar width
+  background-color: $background-secondary;
+  transform: translateX(-100%); // Initially hidden off-screen
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+// --- Main Content ---
+.main-content-wrapper {
+  flex-grow: 1;
+  //height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: filter 0.3s ease-in-out;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: $background-secondary;
+  border-bottom: 1px solid $border-primary;
+  flex-shrink: 0; // Prevent header from shrinking
+
+  .header-logo {
+    height: 40px;
+    width: 60px;
+    object-fit: contain;
+  }
+
+  h1 {
+    margin: 0;
+    margin-left: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+}
+
+main {
+  flex-grow: 1;
+  overflow-y: auto; // Allow only the main content to scroll
+  padding: 1rem;
+}
+
+// --- Burger Menu Button ---
+.burger-menu {
+  background: none;
+  border: none;
+  color: $text-primary;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+
+  &:hover {
+    color: $primary-accent;
+  }
+}
+
+// --- Overlay ---
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+// --- State when sidebar is open ---
+.app-layout.sidebar-open {
+  .sidebar {
+    transform: translateX(0);
+  }
+  .sidebar-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+  .main-content-wrapper {
+    // This creates the "less visible" effect
+    filter: blur(1px) brightness(0.8);
+  }
 }

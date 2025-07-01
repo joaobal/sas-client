@@ -9,7 +9,7 @@
                 [value]="selectedStream().url"
                 (change)="onStreamSelect($event)">
                 @for (stream of availableStreams(); track stream.id) {
-                    <option [value]="stream.url">{{ stream.name }}</option>
+                    <option [value]="stream.url">{{ stream.url }}</option>
                 }
             </select>
         </div>

@@ -28,9 +28,10 @@
 }
 
 .stream-select {
-    display: flex;          // 1. Treats the header's direct children (img, h1) as flexible items.
-    align-items: center;    // 2. Vertically aligns the items to the center.
-    gap: 3rem;              // 3. Adds a 1rem space between the logo and the title.
+    display: flex;          
+    align-items: center;    
+    gap: 3rem;              
+    width: max-content;
 }
 
 select {

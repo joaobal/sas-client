@@ -1,13 +1,35 @@
-<header>
-    <img 
-        class="header-logo"
-        ngSrc="../assets/sas-logo-small-noText.ico" 
-        alt="SAS Logo" 
-        width="120" 
-        height="100"
-        priority="true" />
-    <h1>Watch</h1>
-</header>
-<main>
-    <router-outlet />
-</main>
+<div class="app-layout" [class.sidebar-open]="isSidebarOpen()">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <app-nav-bar />
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-content-wrapper">    
+        <header>
+            <!-- Burger menu button to toggle the sidebar -->
+            <button class="burger-menu" (click)="layoutService.toggleSidebar()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+
+            <!-- Page Icon -->
+            <img 
+                class="header-logo"
+                ngSrc="../assets/sas-logo-small-noText.ico" 
+                alt="SAS Logo" 
+                width="120" 
+                height="100"
+                priority="true" />
+            <h1>{{ currentPageTitle() }}</h1>
+        </header>
+
+        <!-- Page selector -->
+        <main>
+            <router-outlet />
+        </main>
+    </div>
+
+    <!-- Overlay for shadow effect -->
+    <div class="sidebar-overlay" (click)="layoutService.closeSidebar()"></div>
+</div>

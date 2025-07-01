@@ -93,8 +93,10 @@ export class WatchComponent implements AfterViewInit, OnDestroy {
             ],
         });
 
-        // This is the placeholder for event handling
-        this.listenForPlayerEvents();
+        // Run event handling after 1 second
+        setTimeout(() => {
+            this.listenForPlayerEvents();
+        }, 3000);
     }
 
     private listenForPlayerEvents(): void {
@@ -125,6 +127,13 @@ export class WatchComponent implements AfterViewInit, OnDestroy {
         });
 
         this.player.on('videoResolution', (res: { width: number, height: number}) => {
+             this.analytics.update(current => ({
+                ...(current ?? this.getInitialAnalytics()),
+                resolution: `${res.width}x${res.height}`,
+            }));
+        });
+
+        this.player.on('config', (res: { width: number, height: number}) => {
              this.analytics.update(current => ({
                 ...(current ?? this.getInitialAnalytics()),
                 resolution: `${res.width}x${res.height}`,
