@@ -1,0 +1,70 @@
+<div class="stream-layout">
+    <!-- Left Column -->
+    <div class="left-column">
+        <section class="card">
+            <h3 class="card-title">Stream Source</h3>
+            <select 
+                [ngModel]="selectedCameraId()" 
+                (change)="onCameraSelectionChange($event)">
+                @if (availableCameras().length === 0) {
+                    <option value="" disabled>No cameras found</option>
+                }
+                @for (camera of availableCameras(); track camera.deviceId) {
+                    <option [value]="camera.deviceId">{{ camera.label || 'Camera ' + ($index + 1) }}</option>
+                }
+            </select>
+            <div #rawPlayer class="player-container raw-feed">
+                <!-- Raw Live Camera Feed player will be initialized here -->
+            </div>
+        </section>
+
+        <section class="card">
+            <h3 class="card-title">Analysis Selection</h3>
+            <div class="analyzer-table">
+                @for (analyzer of analyzers(); track analyzer.id) {
+                    <div class="analyzer-row">
+                        <div class="radio-cell">
+                            <input 
+                                type="radio" 
+                                name="analyzer" 
+                                [id]="'analyzer-' + analyzer.id"
+                                [value]="analyzer.id"
+                                [checked]="selectedAnalyzerId() === analyzer.id"
+                                (change)="selectAnalyzer(analyzer.id)" />
+                        </div>
+                        <label [for]="'analyzer-' + analyzer.id" class="name-cell">{{ analyzer.name }}</label>
+                    </div>
+                }
+                <!-- Add New Row -->
+                <div class="analyzer-row add-row" (click)="addAnalyzer()">
+                    <div class="radio-cell">
+                        <div class="add-icon">+</div>
+                    </div>
+                    <div class="name-cell">Add New Analyzer</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Right Column -->
+    <div class="right-column">
+        <section class="card">
+            <h3 class="card-title">Analysis</h3>
+            <div #analysisPlayer class="player-container analysis-feed">
+                <!-- Stream with post-processing player will be initialized here -->
+            </div>
+        </section>
+
+        <section class="card">
+            <h3 class="card-title">Analysis Statistics</h3>
+            @if (statistics(); as stats) {
+                <ul class="stats-list">
+                    <li><span>Framerate:</span> <span>{{ stats.framerate.toFixed(2) }} fps</span></li>
+                    <li><span>Latency:</span> <span>{{ stats.latency.toFixed(2) }} s</span></li>
+                    <li><span>Objects Detected:</span> <span>{{ stats.objectsDetected }}</span></li>
+                    <li><span>Alerts Triggered:</span> <span>{{ stats.alerts }}</span></li>
+                </ul>
+            }
+        </section>
+    </div>
+</div>

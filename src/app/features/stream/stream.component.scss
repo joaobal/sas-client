@@ -1,0 +1,149 @@
+@import '../../../styles/colors';
+@import '../../../styles/typography';
+
+:host {
+    display: block;
+    padding: 1rem;
+}
+
+.stream-layout {
+    display: flex;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.left-column {
+    flex: 1; // Takes up 1 part of the space
+    border-right: 1px solid $border-primary;
+    padding-right: 1.5rem;
+}
+
+.right-column {
+    flex: 1.5; // Takes up 2 parts of the space, making it wider
+}
+
+.divider {
+    width: 1px;
+    background-color: $border-primary;
+    height: 100%;
+}
+
+.card {
+    background-color: $background-secondary;
+    padding: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $text-primary;
+    border-bottom: 1px solid $border-secondary;
+    padding-bottom: 0.75rem;
+}
+
+// --- Player Styles ---
+.player-container {
+    width: 100%;
+    background-color: #000;
+    border-radius: 6px;
+}
+.raw-feed {
+    aspect-ratio: 4 / 3; // More square-like for a raw feed
+}
+.analysis-feed {
+    aspect-ratio: 16 / 9; // Standard video aspect ratio
+}
+
+// --- Left Column Specifics ---
+select {
+    width: 100%;
+    background-color: $surface-raised;
+    color: $text-primary;
+    border: 1px solid $border-primary;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.analyzer-table {
+    display: flex;
+    flex-direction: column;
+}
+
+.analyzer-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border-secondary;
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &.add-row {
+        cursor: pointer;
+        color: $text-secondary;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: $primary-accent;
+        }
+    }
+}
+
+.radio-cell {
+    padding: 0.75rem;
+    display: grid;
+    place-items: center;
+    
+    input[type="radio"] {
+        width: 1.25rem;
+        height: 1.25rem;
+        accent-color: $primary-accent;
+    }
+}
+
+.name-cell {
+    padding: 0.75rem;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.add-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+// --- Right Column Specifics ---
+.stats-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.95rem;
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid $border-secondary;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        span:first-child {
+            color: $text-secondary;
+        }
+    }
+}

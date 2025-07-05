@@ -1,0 +1,16 @@
+@import './colors';
+
+/*
+ * ==========================================
+ * TYPOGRAPHY SYSTEM
+ * ==========================================
+ * Defines font families, sizes, weights,
+ * and styles for consistent text treatment.
+ */
+
+// 1. Import the font from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+$font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol';

@@ -1,0 +1,59 @@
+@import 'styles/colors';
+@import 'styles/typography';
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html, body {
+    height: 100%; // Make sure html and body fill the viewport
+    margin: 0;
+}
+
+body {
+  font-family: $font-family-sans;
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: $text-primary; // USE SCSS VARIABLE
+  background-color: $background-primary; // USE SCSS VARIABLE
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-sans;
+  font-weight: 600;
+  line-height: 1.3;
+  color: $text-primary; // USE SCSS VARIABLE
+  margin-block-start: 1.5em;
+  margin-block-end: 0.75em;
+}
+
+// ... (h1, h2, h3, p definitions remain the same)
+h1 { font-size: 2.25rem; font-weight: 700; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.375rem; }
+p { margin-bottom: 1rem; }
+
+a {
+  color: $primary-accent; // USE SCSS VARIABLE
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: $primary-accent-hover; // USE SCSS VARIABLE
+    text-decoration: underline;
+  }
+}
+
+.text-secondary {
+  color: $text-secondary; // USE SCSS VARIABLE
+}
+
+.font-bold {
+  font-weight: 700;
+}
