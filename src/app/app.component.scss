@@ -1,26 +1,9 @@
 @import '../styles/colors';
 @import '../styles/typography';
 
-// header {
-//     display: flex;          // 1. Treats the header's direct children (img, h1) as flexible items.
-//     align-items: center;    // 2. Vertically aligns the items to the center.
-//     gap: 3rem;              // 3. Adds a 1rem space between the logo and the title.
-
-//     padding: 2rem 2rem;
-//     background-color: $background-primary;
-    
-//     .header-logo {
-//         object-fit: contain;
-//     }
-
-//     h1 {
-//         margin: 0;
-//     }
-// }
-
 :host {
   display: block;
-  //height: 100vh;
+  height: 100%;
   overflow: hidden; // Prevent scrolling on the main container
 }
 
